@@ -13,7 +13,9 @@ const stats = [
   },
 ];
 
-const ProductsIntro = () => {
+import ProductTabs from "./ProductTabs";
+
+const ProductsIntro = ({ activeTab, cartCount, onTabChange }) => {
   return (
     <section className="bg-white">
       <div className="bg-gradient-to-r from-[#4f39f6] to-[#b20cff] px-6 py-12 text-white lg:px-28">
@@ -48,14 +50,11 @@ const ProductsIntro = () => {
             designed to boost your productivity and creativity.
           </p>
 
-          <div className="mt-6 inline-flex rounded-full border border-gray-100 bg-white p-1 shadow-sm">
-            <button className="rounded-full bg-gradient-to-r from-[#4f39f6] to-[#9514fa] px-7 py-3 text-sm font-bold text-white">
-              Products
-            </button>
-            <button className="rounded-full px-7 py-3 text-sm font-medium text-[#101727]">
-              Cart (2)
-            </button>
-          </div>
+          <ProductTabs
+            activeTab={activeTab}
+            cartCount={cartCount}
+            onTabChange={onTabChange}
+          />
         </div>
       </div>
     </section>

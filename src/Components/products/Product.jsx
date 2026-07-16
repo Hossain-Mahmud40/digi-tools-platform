@@ -1,9 +1,14 @@
 import { Check } from "lucide-react";
-const Product = ({ product }) => {
+
+const Product = ({ onAddToCart, product }) => {
+  const badgeStyles = {
+    "Best Seller": "bg-[#fff3d6] text-[#d58a00]",
+    Popular: "bg-[#ebe8ff] text-[#6d4cff]",
+    New: "bg-[#dcfce7] text-[#16a34a]",
+  };
+  const badgeClass = badgeStyles[product.badge] || "bg-gray-100 text-gray-600";
   return (
-    <section className="">
-      <div className="">
-        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_18px_45px_rgba(16,23,39,0.08)]">
+    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_18px_45px_rgba(16,23,39,0.08)]">
           <div className="flex items-start justify-between gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f5f3ff]">
               <img
@@ -13,8 +18,10 @@ const Product = ({ product }) => {
               />
             </div>
 
-            <span className="rounded-full bg-[#fff3d6] px-4 py-1.5 text-xs font-semibold text-[#d58a00]">
-              Best Seller
+            <span
+              className={`rounded-full px-4 py-1.5 text-xs font-semibold ${badgeClass}`}
+            >
+              {product.badge}
             </span>
           </div>
 
@@ -45,12 +52,13 @@ const Product = ({ product }) => {
             ))}
           </ul>
 
-          <button className="btn mt-6 w-full rounded-full border-0 bg-gradient-to-r from-[#4f39f6] to-[#b20cff] text-white shadow-none hover:opacity-90">
+          <button
+            className="btn mt-6 w-full rounded-full border-0 bg-gradient-to-r from-[#4f39f6] to-[#b20cff] text-white shadow-none hover:opacity-90"
+            onClick={() => onAddToCart(product)}
+          >
             Buy Now
           </button>
         </div>
-      </div>
-    </section>
   );
 };
 

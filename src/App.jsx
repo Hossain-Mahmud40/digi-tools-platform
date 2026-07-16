@@ -1,5 +1,6 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
+import Cart from "./Components/cart/Cart";
 import HeroSection from "./Components/HeroSection/HeroSection";
 import Navbar from "./Components/NavBar/Navbar";
 import Products from "./Components/products/Products";
@@ -10,6 +11,18 @@ const productsPromise = axios.get("/productData.json");
 
 function App() {
   const navLinks = ["Products", "Features", "Pricing", "Testimonials", "FAQ"];
+  const [activeTab, setActiveTab] = useState("products");
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (product) => {
+    setCartItems((currentItems) => [...currentItems, product]);
+  };
+
+  const handleRemoveFromCart = (itemIndex) => {
+    setCartItems((currentItems) =>
+      currentItems.filter((_, index) => index !== itemIndex),
+    );
+  };
 
   return (
     <>
@@ -17,13 +30,24 @@ function App() {
         <Navbar navLinks={navLinks} />
       </header>
       <HeroSection />
-      <ProductsIntro />
+      <ProductsIntro
+        activeTab={activeTab}
+        cartCount={cartItems.length}
+        onTabChange={setActiveTab}
+      />
 
-      <Suspense
-        fallback={<span className="loading loading-spinner loading-lg"></span>}
-      >
-        <Products productsPromise={productsPromise} />
-      </Suspense>
+      {activeTab === "products" ? (
+        <Suspense
+          fallback={<span className="loading loading-spinner loading-lg"></span>}
+        >
+          <Products
+            onAddToCart={handleAddToCart}
+            productsPromise={productsPromise}
+          />
+        </Suspense>
+      ) : (
+        <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+      )}
     </>
   );
 }
