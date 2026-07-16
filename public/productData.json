@@ -87,14 +87,5 @@
     "price": "$45/one-time",
     "image": "/assets/products/design-tool.png",
     "features": ["Logo templates", "Color palettes", "Brand guideline files"]
-  },
-  {
-    "id": 10,
-    "name": "Productivity Suite",
-    "badge": "Popular",
-    "description": "Manage daily tasks, notes, workflows, and project planning from one simple digital toolkit.",
-    "price": "$35/mo",
-    "image": "/assets/products/operation.png",
-    "features": ["Task planner", "Workflow boards", "Progress tracking"]
   }
 ]

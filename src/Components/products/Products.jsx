@@ -1,127 +1,18 @@
-import React from "react";
+import { use } from "react";
+import Product from "./Product";
 
-const Products = () => {
+const Products = ({ productsPromise }) => {
+  const productsres = use(productsPromise);
+  const products = productsres.data;
+
   return (
-    <div className="card w-96 bg-base-100 shadow-sm">
-      <div className="card-body">
-        <div className="text-right">
-          <span className="badge border-0 rounded-full bg-amber-100 px-4 py-3 text-xs font-medium text-amber-700">
-            Best Seller
-          </span>
-        </div>
-        <div className="flex justify-between">
-          <h2 className="text-3xl font-bold">Premium</h2>
-          <span className="text-xl">$29/mo</span>
-        </div>
-        <ul className="mt-6 flex flex-col gap-2 text-xs">
-          <li>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-4 me-2 inline-block text-success"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <span>High-resolution image generation</span>
-          </li>
-          <li>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-4 me-2 inline-block text-success"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <span>Customizable style templates</span>
-          </li>
-          <li>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-4 me-2 inline-block text-success"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <span>Batch processing capabilities</span>
-          </li>
-          <li>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-4 me-2 inline-block text-success"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <span>AI-driven image enhancements</span>
-          </li>
-          <li className="opacity-50">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-4 me-2 inline-block text-base-content/50"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <span className="line-through">Seamless cloud integration</span>
-          </li>
-          <li className="opacity-50">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-4 me-2 inline-block text-base-content/50"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <span className="line-through">Real-time collaboration tools</span>
-          </li>
-        </ul>
-        <div className="mt-6">
-          <button className="btn btn-primary btn-block">Subscribe</button>
-        </div>
+    <section className="bg-white px-6 pb-20 lg:px-28">
+      <div className="mx-auto grid max-w-[1200px] gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
