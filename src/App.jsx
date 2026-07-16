@@ -1,7 +1,8 @@
 import "./App.css";
-import HeroSection from "./Components/HeroSection";
-import Navbar from "./Components/Navbar";
-import ProductsIntro from "./Components/ProductsIntro";
+import HeroSection from "./Components/HeroSection/HeroSection";
+import Navbar from "./Components/NavBar/Navbar";
+import Products from "./Components/products/Products";
+import ProductsIntro from "./Components/products/ProductsIntro";
 
 function App() {
   const navLinks = ["Products", "Features", "Pricing", "Testimonials", "FAQ"];
@@ -13,7 +14,7 @@ function App() {
       </header>
       <HeroSection></HeroSection>
       <ProductsIntro></ProductsIntro>
-      <section className="products"></section>
+      <Products></Products>
     </>
   );
 }
