@@ -1,7 +1,7 @@
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 
-const Cart = ({ cartItems, onRemoveFromCart }) => {
+const Cart = ({ cartItems, onCheckout, onRemoveFromCart }) => {
   return (
     <section className="bg-white px-6 pb-24 lg:px-28">
       <div className="mx-auto max-w-[980px] rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
@@ -24,7 +24,7 @@ const Cart = ({ cartItems, onRemoveFromCart }) => {
           </div>
         )}
 
-        <CartSummary cartItems={cartItems} />
+        <CartSummary cartItems={cartItems} onCheckout={onCheckout} />
       </div>
     </section>
   );

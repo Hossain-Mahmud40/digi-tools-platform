@@ -1,4 +1,4 @@
-const Navbar = ({ navLinks }) => {
+const Navbar = ({ cartCount, navLinks }) => {
   return (
     <div className="navbar border-b border-gray-100 bg-white px-6 py-4 shadow-sm lg:px-28">
       <div className="navbar-start lg:flex-1">
@@ -47,7 +47,7 @@ const Navbar = ({ navLinks }) => {
         </ul>
       </div>
       <div className="navbar-end gap-4 lg:flex-1">
-        <button className="btn btn-ghost btn-sm hidden text-[#101727] hover:bg-transparent hover:text-[#4f39f6] sm:flex">
+        <button className="btn btn-ghost btn-sm relative hidden text-[#101727] hover:bg-transparent hover:text-[#4f39f6] sm:flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4"
@@ -62,6 +62,11 @@ const Navbar = ({ navLinks }) => {
               d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L5.4 5M7 13l-2 5h14M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
             />
           </svg>
+          {cartCount > 0 && (
+            <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[11px] font-bold leading-none text-white">
+              {cartCount}
+            </span>
+          )}
         </button>
         <button className="btn btn-ghost btn-sm hidden text-[#101727] hover:bg-transparent hover:text-[#4f39f6] sm:flex">
           Login

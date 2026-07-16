@@ -1,4 +1,6 @@
 import { Suspense, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Cart from "./Components/cart/Cart";
 import HeroSection from "./Components/HeroSection/HeroSection";
@@ -15,27 +17,42 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const handleAddToCart = (product) => {
-    setCartItems((currentItems) => {
-      const isAlreadyAdded = currentItems.some((item) => item.id === product.id);
+    const isAlreadyAdded = cartItems.some((item) => item.id === product.id);
 
-      if (isAlreadyAdded) {
-        return currentItems;
-      }
+    if (isAlreadyAdded) {
+      return;
+    }
 
-      return [...currentItems, product];
-    });
+    setCartItems((currentItems) => [...currentItems, product]);
+    toast.success(`${product.name} added to cart`);
   };
 
   const handleRemoveFromCart = (itemIndex) => {
+    const removedItem = cartItems[itemIndex];
+
+    if (!removedItem) {
+      return;
+    }
+
     setCartItems((currentItems) =>
       currentItems.filter((_, index) => index !== itemIndex),
     );
+    toast.info(`${removedItem.name} removed from cart`);
+  };
+
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      return;
+    }
+
+    toast.success("Checkout complete. Your cart is now empty.");
+    setCartItems([]);
   };
 
   return (
     <>
       <header>
-        <Navbar navLinks={navLinks} />
+        <Navbar cartCount={cartItems.length} navLinks={navLinks} />
       </header>
       <HeroSection />
       <ProductsIntro
@@ -55,8 +72,13 @@ function App() {
           />
         </Suspense>
       ) : (
-        <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+        <Cart
+          cartItems={cartItems}
+          onCheckout={handleCheckout}
+          onRemoveFromCart={handleRemoveFromCart}
+        />
       )}
+      <ToastContainer position="top-right" autoClose={1800} />
     </>
   );
 }
