@@ -1,7 +1,7 @@
 # DigiTools - Digital Tools Buying Platform
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Manrope&weight=700&size=28&duration=2500&pause=800&color=7C3AED&center=true&vCenter=true&width=700&lines=DigiTools+-+Digital+Tools+Platform;Buy+Premium+Digital+Products;React+%2B+Tailwind+%2B+DaisyUI+Project" alt="DigiTools animated typing banner" />
+  <img src="https://readme-typing-svg.demolab.com?font=Manrope&weight=700&size=28&duration=2500&pause=800&color=7C3AED&center=true&vCenter=true&width=760&lines=Hi%2C+I+am+Hossain+Mahmud;DigiTools+-+Digital+Tools+Platform;Buy+Premium+Digital+Products;React+%2B+Tailwind+%2B+DaisyUI+Project" alt="DigiTools animated typing banner" />
 </p>
 
 ## Project Overview
@@ -10,9 +10,9 @@ DigiTools is a modern digital tools buying platform where users can explore prem
 
 ## Live Demo
 
-Live Site: Add your live site link here
+Live Site: [digi-toolss.netlify.app](https://digi-toolss.netlify.app/)
 
-Repository: Add your GitHub repository link here
+GitHub Profile: [Hossain-Mahmud40](https://github.com/Hossain-Mahmud40/)
 
 ## Technologies Used
 
@@ -101,10 +101,10 @@ While building this project, I practiced:
 
 ## Author
 
-**Your Name**
+**Hossain Mahmud**
 
-- LinkedIn: Add your LinkedIn profile
-- GitHub: Add your GitHub profile
+- LinkedIn: [Hossain Mahmud](https://www.linkedin.com/in/hossain-mahmud-4588573ab/)
+- GitHub: [Hossain-Mahmud40](https://github.com/Hossain-Mahmud40/)
 
 ---
 
