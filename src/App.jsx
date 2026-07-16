@@ -3,13 +3,18 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Cart from "./Components/cart/Cart";
+import CallToAction from "./Components/cta/CallToAction";
+import Footer from "./Components/footer/Footer";
 import HeroSection from "./Components/HeroSection/HeroSection";
 import Navbar from "./Components/NavBar/Navbar";
+import Pricing from "./Components/pricing/Pricing";
 import Products from "./Components/products/Products";
 import ProductsIntro from "./Components/products/ProductsIntro";
+import Steps from "./Components/steps/Steps";
 import axios from "axios";
 
 const productsPromise = axios.get("/productData.json");
+const pricingPromise = axios.get("/pricing.json");
 
 function App() {
   const navLinks = ["Products", "Features", "Pricing", "Testimonials", "FAQ"];
@@ -78,6 +83,15 @@ function App() {
           onRemoveFromCart={handleRemoveFromCart}
         />
       )}
+
+      <Steps />
+      <Suspense
+        fallback={<span className="loading loading-spinner loading-lg"></span>}
+      >
+        <Pricing pricingPromise={pricingPromise} />
+      </Suspense>
+      <CallToAction />
+      <Footer />
       <ToastContainer position="top-right" autoClose={1800} />
     </>
   );
