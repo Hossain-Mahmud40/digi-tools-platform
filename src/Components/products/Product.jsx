@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 
-const Product = ({ onAddToCart, product }) => {
+const Product = ({ isInCart, onAddToCart, product }) => {
   const badgeStyles = {
     "Best Seller": "bg-[#fff3d6] text-[#d58a00]",
     Popular: "bg-[#ebe8ff] text-[#6d4cff]",
@@ -52,12 +52,21 @@ const Product = ({ onAddToCart, product }) => {
             ))}
           </ul>
 
-          <button
-            className="btn mt-6 w-full rounded-full border-0 bg-gradient-to-r from-[#4f39f6] to-[#b20cff] text-white shadow-none hover:opacity-90"
-            onClick={() => onAddToCart(product)}
-          >
-            Buy Now
-          </button>
+      <button
+        className={`btn mt-6 w-full rounded-full border-0 text-white shadow-none hover:opacity-90 ${
+          isInCart
+            ? "bg-[#16a34a]"
+            : "bg-gradient-to-r from-[#4f39f6] to-[#b20cff]"
+        }`}
+        disabled={isInCart}
+        onClick={() => {
+          if (!isInCart) {
+            onAddToCart(product);
+          }
+        }}
+      >
+        {isInCart ? "Check Your Cart" : "Buy Now"}
+      </button>
         </div>
   );
 };

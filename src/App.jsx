@@ -15,7 +15,15 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const handleAddToCart = (product) => {
-    setCartItems((currentItems) => [...currentItems, product]);
+    setCartItems((currentItems) => {
+      const isAlreadyAdded = currentItems.some((item) => item.id === product.id);
+
+      if (isAlreadyAdded) {
+        return currentItems;
+      }
+
+      return [...currentItems, product];
+    });
   };
 
   const handleRemoveFromCart = (itemIndex) => {
@@ -41,6 +49,7 @@ function App() {
           fallback={<span className="loading loading-spinner loading-lg"></span>}
         >
           <Products
+            cartItems={cartItems}
             onAddToCart={handleAddToCart}
             productsPromise={productsPromise}
           />

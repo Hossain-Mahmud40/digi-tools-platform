@@ -18,7 +18,7 @@ const CartItem = ({ item, itemIndex, onRemoveFromCart }) => {
       </div>
 
       <button
-        className="text-sm font-bold text-pink-500 hover:text-pink-600"
+        className="text-sm font-bold text-red-500 hover:text-red-600"
         onClick={() => onRemoveFromCart(itemIndex)}
       >
         Remove
